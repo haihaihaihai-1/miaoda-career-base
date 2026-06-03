@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# commit-msg hook · miaoda-career-base
+# 校验 commit message 符合 Conventional Commits（commitlint.config.cjs）
+#
+# 启用方式：见 .husky/pre-commit 顶部注释。
+
+npx --no -- commitlint --edit "$1"

@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 设计系统 - 职业路径导航器
+ * 主题色：#1a56db（深蓝）
+ * 所有颜色使用 HSL 格式
+ */
+
+@layer base {
+  :root {
+    /* 基础背景 */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 12%;
+
+    /* 卡片 */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 12%;
+
+    /* 弹出层 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 12%;
+
+    /* 主色：#1a56db 深蓝（精确换算 HSL(221,79%,48%)） */
+    --primary: 221 79% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 221 79% 58%;
+    --primary-glow: 221 79% 66%;
+
+    /* 次要色 */
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 215 25% 20%;
+
+    /* 成功色：#10b981 翠绿 */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 160 84% 49%;
+
+    /* 警告色：#f59e0b 琥珀 */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 60%;
+
+    /* 静默色 */
+    --muted: 210 30% 94%;
+    --muted-foreground: 215 15% 46%;
+
+    /* 强调色 - 浅蓝背景 */
+    --accent: 221 79% 96%;
+    --accent-foreground: 221 79% 35%;
+
+    /* 危险色 */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* 边框 & 输入 */
+    --border: 214 25% 88%;
+    --input: 214 25% 88%;
+    --ring: 221 79% 48%;
+
+    /* 圆角 */
+    --radius: 0.75rem;
+
+    /* 侧边栏 */
+    --sidebar-background: 221 79% 48%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 221 79% 48%;
+    --sidebar-accent: 221 79% 40%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 221 79% 40%;
+    --sidebar-ring: 221 79% 66%;
+
+    /* 图表色 */
+    --chart-1: 221 79% 48%;
+    --chart-2: 160 84% 39%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 270 60% 50%;
+    --chart-5: 0 84% 60%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 95%;
+
+    --card: 222 40% 11%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 222 40% 11%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 221 79% 57%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 221 79% 67%;
+    --primary-glow: 221 79% 72%;
+
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 210 40% 90%;
+
+    --success: 160 84% 44%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 160 84% 54%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 65%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 215 20% 58%;
+
+    --accent: 222 30% 18%;
+    --accent-foreground: 210 40% 90%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 221 79% 57%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 221 79% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 40% 14%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 222 30% 16%;
+    --sidebar-ring: 221 79% 57%;
+
+    --chart-1: 221 79% 57%;
+    --chart-2: 160 84% 44%;
+    --chart-3: 38 92% 55%;
+    --chart-4: 270 60% 55%;
+    --chart-5: 0 62% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* 滚动条样式 */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+}
+
+/* 时间轴节点脉冲动画 */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 hsl(218 80% 47% / 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px hsl(218 80% 47% / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsl(218 80% 47% / 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+/* 卡片阴影 */
+.shadow-card {
+  box-shadow: 0 2px 8px -2px hsl(218 80% 47% / 0.08), 0 1px 3px -1px hsl(0 0% 0% / 0.04);
+}
+
+/* 渐变背景 */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+}
+
+/* 梯度文字 */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

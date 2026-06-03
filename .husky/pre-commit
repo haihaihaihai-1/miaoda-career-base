@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+# pre-commit hook · miaoda-career-base
+#
+# 启用方式（仅在本目录被抽为独立 git repo 后）：
+#   chmod +x .husky/pre-commit
+#   npx husky
+#
+# 跳过单次：git commit --no-verify
+
+set -e
+
+echo "▶ Running typecheck..."
+npm run typecheck
+
+echo "▶ Running biome lint..."
+npm run lint
+
+echo "▶ Running unit tests..."
+npm test
