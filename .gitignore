@@ -14,7 +14,7 @@ working_dir
 dist
 dist-ssr
 *.local
-package-lock.json
+# package-lock.json — committed for npm ci / reproducible builds
 
 # Editor directories and files
 .vscode/*
