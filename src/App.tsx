@@ -38,6 +38,9 @@ function RootRoute() {
   }
 }
 
+/** GitHub Pages 部署时 base !== "/" 须设置 basename */
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -45,12 +48,11 @@ const App = () => (
         <Toaster />
         <Sonner />
         <NetworkStatusBanner className="fixed top-0 left-0 right-0 z-50" />
-        <BrowserRouter>
+        <BrowserRouter basename={routerBasename}>
           <Routes>
             <Route path="/" element={<RootRoute />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-          {/* AI 顾问悬浮按钮 - 按 brand 调度 provider */}
           <BrandAdvisor />
         </BrowserRouter>
       </AppProvider>
